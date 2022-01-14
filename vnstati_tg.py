@@ -13,7 +13,7 @@ from functools import wraps
 vnstati_setting = ["vnstati", "-d", "-vs", "-o", "/tmp/vnstat.png"]
 BOT_TOKEN = "BOT_TOKEN"
 HOSTNAME = "HOSTNAME"
-LIST_OF_ADMINS = [ADMINS.CHAT_ID]
+LIST_OF_ADMINS = [Admin's CHAT_ID]
 
 """Runtime Logging"""
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
@@ -29,12 +29,12 @@ def start(update: Update, context: CallbackContext):
     )
 
 def img_generator(args):
-    ret = subprocess.run(args,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding="utf-8",timeout=1)
+    ret = subprocess.run(args)
     if ret.returncode == 0:
-        print("Image has been generated")
+        print("Image has been generated at: " + localtime)
     else:
         print("error:",ret)
- 
+
 def img_push(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     img_generator(vnstati_setting)
