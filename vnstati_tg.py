@@ -22,6 +22,10 @@ logger = logging.getLogger(__name__)
 bot = telegram.Bot(token=BOT_TOKEN)
 localtime = time.asctime(time.localtime(time.time()))
 
+def localtime_generator():
+    localtime = time.asctime(time.localtime(time.time()))
+    return localtime
+
 def start(update: Update, context: CallbackContext):
     """Display chat id."""
     update.effective_message.reply_html(
@@ -30,6 +34,7 @@ def start(update: Update, context: CallbackContext):
 
 def img_generator(args):
     ret = subprocess.run(args)
+    localtime = localtime_generator()
     if ret.returncode == 0:
         print("Image has been generated at: " + localtime)
     else:
@@ -38,6 +43,7 @@ def img_generator(args):
 def img_push(update: Update, context: CallbackContext):
     chat_id = update.message.chat_id
     img_generator(vnstati_setting)
+    localtime = localtime_generator()
     img = os.path.abspath("/tmp/vnstat.png")
     bot.send_photo(chat_id, open(img,'rb'), caption = HOSTNAME + '\n' + "Generated at:" + localtime)
 
@@ -60,6 +66,7 @@ def img_publisher(context: CallbackContext):
     img = os.path.abspath("/tmp/vnstat.png")
     chat_id = context.job.context
     img_generator(vnstati_setting)
+    localtime = localtime_generator()
     bot.send_photo(chat_id, open(img,'rb'), caption = HOSTNAME + '\n' + "Generated at:" + localtime)
 
 def unset(update: Update, context: CallbackContext) -> None:
