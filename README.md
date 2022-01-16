@@ -2,6 +2,8 @@ Vnstati-Publisher
 ===
 [![License: GPL v3](https://img.shields.io/pypi/l/python-telegram-bot.svg)](https://www.gnu.org/licenses/lgpl-3.0.html)
 [![Require: python-telegram-bot](https://img.shields.io/badge/Require-python--telegram--bot-blue)](https://github.com/python-telegram-bot/python-telegram-bot)
+![Require: Vnstat](https://img.shields.io/badge/Require-Vnstat-blue)
+![Require: Vnstati](https://img.shields.io/badge/Require-Vnstati-blue)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/python-telegram-bot)
 
 ## Introduction
